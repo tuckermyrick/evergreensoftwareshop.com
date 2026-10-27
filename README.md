@@ -14,6 +14,6 @@ One static page, served by GitHub Pages from the `main` branch root.
 | A     | @    | 185.199.109.153        |
 | A     | @    | 185.199.110.153        |
 | A     | @    | 185.199.111.153        |
-| CNAME | www  | gurnblanstin.github.io |
+| CNAME | www  | tuckermyrick.github.io |
 
 After DNS propagates, turn on "Enforce HTTPS" in the repo's Pages settings.
