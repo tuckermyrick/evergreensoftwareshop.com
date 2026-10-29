@@ -2,9 +2,9 @@
 
 One static page, served by GitHub Pages from the `main` branch root.
 
-- `index.html` — the whole site. Edit the text directly.
+- `index.html` + `assets/` — Vite production build from Dane (Bowbot), merged 2026-10-29 with a contact block.
 - `CNAME` — custom domain. Do not delete it or Pages drops the domain.
-- Phone number in `index.html` is a placeholder. Replace before sharing the link.
+- Contact email hello@ needs a Cloudflare Email Routing rule.
 
 ## DNS (at the registrar)
 

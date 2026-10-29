@@ -1,224 +1,202 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Evergreen Software Shop</title>
-<meta name="description" content="The software mechanics for water districts. We fix the thing your clerk re-types, and we keep it running.">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-<meta property="og:title" content="Evergreen Software Shop">
-<meta property="og:description" content="The software mechanics for water districts.">
-<meta property="og:image" content="https://evergreensoftwareshop.com/logo.png">
-<meta property="og:url" content="https://evergreensoftwareshop.com/">
-<style>
-  :root {
-    --bg: #f3efe4;
-    --ink: #121a14;
-    --muted: #41524a;
-    --green: #1b4d2e;
-    --green-deep: #123621;
-    --cream: #f8f5ec;
-    --rule: #cfc7b4;
-    --card: #ffffff;
-    --accent: #d9a43a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #0f1511;
-      --ink: #f1ede2;
-      --muted: #b4bfb6;
-      --rule: #2b3a30;
-      --card: #182119;
-    }
-  }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 19px;
-    line-height: 1.55;
-  }
-  .sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-
-  /* Hero */
-  .hero {
-    background: var(--green);
-    background-image: linear-gradient(180deg, var(--green) 0%, var(--green-deep) 100%);
-    color: var(--cream);
-    padding: 56px 0 60px;
-    border-bottom: 6px solid var(--accent);
-  }
-  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 40px; }
-  .brand svg { width: 44px; height: 44px; flex: none; }
-  .brand .wordmark { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; line-height: 1.05; }
-  .brand .wordmark b { display: block; font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
-  .brand .wordmark span { display: block; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.85; margin-top: 3px; }
-  .hero h1 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: clamp(34px, 6vw, 50px);
-    line-height: 1.08;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin: 0 0 20px;
-    max-width: 14ch;
-  }
-  .hero .tag { font-size: 22px; font-style: italic; margin: 0 0 32px; opacity: 0.92; max-width: 34ch; }
-  .btn {
-    display: inline-block;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    background: var(--accent);
-    color: #1a1304;
-    padding: 13px 22px;
-    border-radius: 6px;
-    text-decoration: none;
-    border: 2px solid transparent;
-  }
-  .btn:hover { background: #e6b24a; }
-  .btn.ghost { background: transparent; color: var(--cream); border-color: rgba(248,245,236,0.6); margin-left: 10px; }
-  .btn.ghost:hover { border-color: var(--cream); }
-
-  /* Sections */
-  section { padding: 52px 0 8px; }
-  h2 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 15px; text-transform: uppercase; letter-spacing: 0.14em;
-    color: var(--green); font-weight: 800; margin: 0 0 18px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  @media (prefers-color-scheme: dark) { h2 { color: #8fc49b; } }
-  h2::after { content: ""; flex: 1; height: 2px; background: var(--rule); }
-  p { margin: 0 0 16px; }
-  .lead { font-size: 22px; line-height: 1.45; }
-
-  .examples { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-  .examples li {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-left: 5px solid var(--green);
-    border-radius: 6px;
-    padding: 16px 18px;
-    font-size: 17px;
-    line-height: 1.4;
-  }
-  .examples li b { display: block; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); margin-bottom: 6px; }
-  @media (prefers-color-scheme: dark) { .examples li b { color: #8fc49b; } .examples li { border-left-color: #8fc49b; } }
-
-  .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
-  .steps li { position: relative; padding: 6px 0 22px 64px; counter-increment: step; }
-  .steps li::before {
-    content: counter(step);
-    position: absolute; left: 0; top: 2px;
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--green); color: var(--cream);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-weight: 800; font-size: 20px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .steps li b { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 20px; display: block; margin-bottom: 4px; }
-
-  .quote {
-    margin: 48px 0 0;
-    padding: 28px 30px;
-    background: var(--green);
-    color: var(--cream);
-    border-radius: 8px;
-    font-size: 24px;
-    font-style: italic;
-    line-height: 1.4;
-    position: relative;
-  }
-  .quote::before { content: "\201C"; position: absolute; left: 14px; top: -6px; font-size: 90px; line-height: 1; opacity: 0.25; font-style: normal; }
-
-  .contact {
-    background: var(--card);
-    border: 2px solid var(--green);
-    border-radius: 10px;
-    padding: 28px 30px;
-    margin-top: 28px;
-    display: grid;
-    gap: 6px;
-  }
-  .contact .who { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-weight: 800; font-size: 24px; margin: 0; }
-  .contact .role { color: var(--muted); margin: 0 0 14px; }
-  .contact a.line { color: var(--ink); text-decoration: none; font-size: 22px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-weight: 600; }
-  .contact a.line:hover { color: var(--green); }
-  @media (prefers-color-scheme: dark) { .contact a.line:hover { color: #8fc49b; } }
-  .contact a.line small { display: inline-block; width: 64px; font-weight: 400; color: var(--muted); font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; }
-
-  footer { margin-top: 64px; background: var(--green-deep); color: var(--cream); padding: 26px 0; font-size: 15px; }
-  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; opacity: 0.9; }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Evergreen Software Shop. The software mechanics.</title>
+  <meta name="description" content="Evergreen Software Shop. The software mechanics. Every small shop has a thing somebody re-types. We fix that one thing. One customer at a time. Washington." />
+  <meta name="theme-color" content="#1b4d2e" />
+  <meta property="og:title" content="Evergreen Software Shop" />
+  <meta property="og:description" content="The software mechanics. Every small shop has a thing somebody re-types. We fix that one thing." />
+  <meta property="og:image" content="https://evergreensoftwareshop.com/assets/logo-full-green.png" />
+  <meta property="og:url" content="https://evergreensoftwareshop.com/" />
+  <link rel="preload" as="image" href="/assets/mark-white-on-clear.png" fetchpriority="high" />
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <script type="module" crossorigin src="/assets/index-PtUHwqE2.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DUWTJctA.css">
 </head>
 <body>
+  <a class="skip" href="#main">Skip to content</a>
 
-<header class="hero">
-  <div class="wrap">
-    <div class="brand">
-      <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path fill="#f8f5ec" d="M50 8 L68 34 L60 34 L76 56 L66 56 L84 78 L56 78 L56 94 L44 94 L44 78 L16 78 L34 56 L24 56 L40 34 L32 34 Z"/>
-        <path fill="none" stroke="#1b4d2e" stroke-width="5" stroke-linecap="square" d="M42 49 L33 59 L42 69 M58 49 L67 59 L58 69"/>
-      </svg>
-      <div class="wordmark"><b>evergreen</b><span>Software Shop</span></div>
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="brand">
+        <img
+          class="brand-mark"
+          src="/assets/mark-white-on-clear.png"
+          width="44"
+          height="44"
+          alt=""
+          fetchpriority="high"
+          decoding="async"
+        />
+        <div class="wordmark">
+          <b>evergreen</b>
+          <span>Software Shop</span>
+        </div>
+      </div>
+      <h1>the software mechanics</h1>
+      <p class="tag">Who's your mechanic? Okay. Who's that for the thing that eats your week?</p>
+      <nav class="hero-nav" aria-label="Page">
+        <a href="#what">What we do</a>
+        <a href="#how">How it works</a>
+        <a href="#who">Who we are</a>
+        <a href="#check">Is this you?</a>
+        <a href="#contact">Get in touch</a>
+      </nav>
     </div>
-    <h1>The software mechanics for water districts.</h1>
-    <p class="tag">Who's your mechanic? Okay, who's that for your billing system?</p>
-    <a class="btn" href="#contact">Talk to Tucker</a><a class="btn ghost" href="#how">How it works</a>
-  </div>
-</header>
+  </header>
 
-<main class="wrap">
+  <main id="main" class="wrap">
+    <section id="what" aria-labelledby="what-heading">
+      <h2 id="what-heading">What we do</h2>
+      <p class="lead">Every small shop has a thing somebody re-types. We fix that one thing.</p>
+      <p>
+        We don't sell you a new system, a migration, or a platform. We build a small fix that sits next to what you already run, does the job, and stays out of the way. Sometimes that means building a small tool from scratch that fits how you already work.
+      </p>
+      <ul class="examples" aria-label="Kinds of work">
+        <li>
+          <b>The handoff.</b>
+          Numbers leave one screen and get typed into another. Every week. Every month.
+        </li>
+        <li>
+          <b>The report.</b>
+          Built in a spreadsheet from numbers that already live in the system you already pay for.
+        </li>
+        <li>
+          <b>The list that matters.</b>
+          Lives on a clipboard. Gets re-typed. Gets missed.
+        </li>
+      </ul>
+      </section>
 
-  <section id="what">
-    <h2>What we do</h2>
-    <p class="lead">Every district has a thing somebody re-types. We fix that one thing.</p>
-    <p>Not a new system, not a migration, not a platform. A small fix that sits next to what you already run, does the job, and stays out of the way.</p>
-    <ul class="examples">
-      <li><b>Meter reads</b>From the handheld into a spreadsheet and then into the billing program. By hand. Every month.</li>
-      <li><b>The state report</b>Built in a spreadsheet every quarter from numbers that already live in the billing system.</li>
-      <li><b>The shutoff list</b>Lives on a clipboard. Gets re-typed. Gets missed.</li>
-    </ul>
-  </section>
+    <section id="how" aria-labelledby="how-heading">
+      <h2 id="how-heading">How it works</h2>
+      <ol class="steps">
+        <li>
+          <b>Lunch.</b>
+          You tell us what eats your week. We listen and ask about the thing that gets re-typed.
+        </li>
+        <li>
+          <b>That evening.</b>
+          You get a working version to try on your own data. Not a proposal. Not a deck. The thing itself.
+        </li>
+        <li>
+          <b>If it helps.</b>
+          We set it up and stay on a monthly retainer, and it keeps getting better.
+        </li>
+      </ol>
+      <p>
+        Nothing gets installed on an office computer. It runs where we can reach it,
+        so when something changes we handle it without a site visit.
+      </p>
+      <p class="aside">
+        We price every job ourselves. We don't quote numbers on this page.
+      </p>
+    </section>
 
-  <section id="how">
-    <h2>How it works</h2>
-    <ol class="steps">
-      <li><b>Lunch.</b>You tell us what eats your week. We listen and ask about the thing that gets re-typed.</li>
-      <li><b>That evening.</b>You get a working version to try on your own data. Not a proposal, not a deck. The thing itself.</li>
-      <li><b>If it helps.</b>We set it up for the district and keep it running. A flat setup fee, then a monthly rate, and it keeps getting better.</li>
-    </ol>
-    <p>Nothing gets installed on an office computer. It runs where we can reach it, so when something changes at the state or in your billing program, we handle it without a site visit.</p>
-  </section>
+    <section id="who" aria-labelledby="who-heading">
+      <h2 id="who-heading">Who we are</h2>
+      <p>
+        A small shop working with operators around Washington.
+        We don't send a salesperson. The person you talk to is the person who does the work.
+      </p>
+      <p>
+        Three owners. We share the work equally. Each of us focuses on a patch of the state.
+      </p>
+      <ul class="team" aria-label="Owners">
+        <li>
+          <b>Dane Bowman</b>
+          <span>Seattle</span>
+        </li>
+        <li>
+          <b>Sambela Azis</b>
+          <span>Bremerton through Tacoma</span>
+        </li>
+        <li>
+          <b>Tucker Myrick</b>
+          <span>Spokane</span>
+        </li>
+      </ul>
+      <div class="quote">
+        You've got a guy for the truck and a guy for the roof. We're the guy for the thing that gets re-typed.
+      </div>
+    </section>
 
-  <section id="who">
-    <h2>Who we are</h2>
-    <p>A small shop out of Spokane, working with districts in the Spokane Valley and Kitsap County. We don't send a salesperson. The person you talk to is the person who does the work.</p>
-    <div class="quote">You've got a guy for the pump and a guy for the truck. We're the guy for the billing program.</div>
-  </section>
+    <section id="check" aria-labelledby="check-heading">
+      <h2 id="check-heading">Is this you?</h2>
+      <p class="lead">Check what sounds familiar. No email. Just a gut check.</p>
+      <form class="quiz" id="quiz">
+        <label class="quiz-item">
+          <input type="checkbox" name="q" value="retype" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="quiz-text">Somebody re-types the same numbers from one place into another, every week or every month.</span>
+        </label>
+        <label class="quiz-item">
+          <input type="checkbox" name="q" value="clipboard" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="quiz-text">A list that matters still lives on a clipboard (or in a spreadsheet that shouldn't be a spreadsheet).</span>
+        </label>
+        <label class="quiz-item">
+          <input type="checkbox" name="q" value="report" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="quiz-text">The report you owe somebody gets rebuilt by hand from numbers that already live in the system.</span>
+        </label>
+        <label class="quiz-item">
+          <input type="checkbox" name="q" value="alone" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="quiz-text">When something breaks, you're on your own until a vendor maybe calls back.</span>
+        </label>
+        <label class="quiz-item">
+          <input type="checkbox" name="q" value="shop" />
+          <span class="box" aria-hidden="true"></span>
+          <span class="quiz-text">You're a small operator, and you need software that fits how you already work, not a new platform.</span>
+        </label>
+      </form>
+      <div class="quiz-meter" id="quiz-meter" hidden aria-hidden="true">
+        <span class="quiz-meter-fill" id="quiz-meter-fill"></span>
+      </div>
+      <div class="quiz-result" id="quiz-result" hidden aria-live="polite">
+        <p class="quiz-count"><span id="quiz-n">0</span> of 5 hit home</p>
+        <p id="quiz-msg"></p>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Get in touch</h2>
-    <div class="contact">
-      <p class="who">Tucker Myrick</p>
-      <p class="role">Evergreen Software Shop, Spokane</p>
-      <!-- TODO: replace the phone number before sharing -->
-      <a class="line" href="tel:+15090000000"><small>Phone</small>(509) 000-0000</a>
-      <a class="line" href="mailto:tucker@evergreensoftwareshop.com"><small>Email</small>tucker@evergreensoftwareshop.com</a>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Get in touch</h2>
+      <p class="lead">Call or write whoever covers your patch. Whoever you reach is who shows up.</p>
+      <ul class="team contact-team" aria-label="Contact">
+        <li>
+          <b>Dane Bowman</b>
+          <span>Seattle</span>
+        </li>
+        <li>
+          <b>Sambela Azis</b>
+          <span>Bremerton through Tacoma</span>
+        </li>
+        <li>
+          <b>Tucker Myrick</b>
+          <span>Spokane</span>
+        </li>
+      </ul>
+      <!-- TODO: hello@ needs a Cloudflare Email Routing rule before this goes to anyone -->
+      <p class="contact-line"><a href="mailto:hello@evergreensoftwareshop.com">hello@evergreensoftwareshop.com</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img class="footer-mark" src="/assets/mark-white-on-clear.png" width="36" height="36" alt="" />
+        <div>
+          <p class="footer-tag">the software mechanics</p>
+          <p class="footer-line">Evergreen Software Shop · Washington</p>
+        </div>
+      </div>
+      <p class="footer-aside">One customer at a time. © 2026</p>
     </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>Evergreen Software Shop</span>
-    <span>Spokane Valley · Kitsap County · Washington</span>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
